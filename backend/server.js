@@ -3,6 +3,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
 mysql.createConnection({
@@ -15,6 +16,57 @@ mysql.createConnection({
 app.get("/", (req, res) => {
   const sql = "SELECT * FROM student";
   db.query(sql, (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  });
+});
+
+app.post("/add", (req, res) => {
+  const sql =
+    "INSERT INTO student (`StudentID`, `FullName`, `BirthDate`, `Gender`,`ContactNumber`,`Address`, `CoursesEnroled`, `ParentContact` ) VALUES(?)";
+  const values = [
+    req.body.id,
+    req.body.name,
+    req.body.dob,
+    req.body.gender,
+    req.body.phone,
+    req.body.address,
+    req.body.courses,
+    req.body.parent,
+  ];
+  db.query(sql, [values], (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  });
+});
+
+app.put("/edit/:id", (req, res) => {
+  const sql =
+    "UPDATE student set `StudentID` =? , `FullName` =?, `BirthDate` =?, `Gender` =?,`ContactNumber` =?,`Address` =?, `CoursesEnroled` =?, `ParentContact` =? ";
+  const values = [
+    req.body.id,
+    req.body.name,
+    req.body.dob,
+    req.body.gender,
+    req.body.phone,
+    req.body.address,
+    req.body.courses,
+    req.body.parent,
+  ];
+
+  const id = req.params.id;
+
+  db.query(sql, [...values, id], (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  });
+});
+
+app.delete("/student/:id", (req, res) => {
+  const sql = "DELETE FROM student WHERE ID = ?";
+  const id = req.params.id;
+
+  db.query(sql, [id], (err, data) => {
     if (err) return res.json("Error");
     return res.json(data);
   });
