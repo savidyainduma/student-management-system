@@ -38,6 +38,13 @@ function App() {
     setStudentToEdit();
     setShowEdit(false);
     getAllStudents();
+
+    Swal.fire({
+      icon: "success",
+      title: "Record updated",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   const handleCloseAdd = () => {
@@ -47,7 +54,7 @@ function App() {
       icon: "success",
       title: "Your record has been saved",
       showConfirmButton: false,
-      timer: 1800,
+      timer: 1500,
     });
   };
 
