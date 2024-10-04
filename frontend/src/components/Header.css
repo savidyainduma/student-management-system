@@ -1,0 +1,12 @@
+.header{
+    margin-top: 10px;
+    position: relative;
+    bottom: 20px;
+}
+
+.header h1{
+    text-align: left;
+    color: aqua;
+    margin-left: 15px;
+    background-color: transparent;
+}

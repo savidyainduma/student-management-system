@@ -1,0 +1,54 @@
+.view-students{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    
+    place-self: center;
+}
+.view-students-container{
+    place-self: center;
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 10px 10px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
+    
+}
+.form-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.form-title img{
+    width: 16px;
+    cursor: pointer;
+}
+.table img{
+    width: 25px;
+    height: 25px;
+}
+.table{
+    place-self: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.table th, td {
+    border-bottom: 1px solid #ddd;
+  }
+
+.table th{
+    padding:20px;
+    font-weight: 800;
+
+}
+
+.table img {
+    padding: 5px;
+}
+
