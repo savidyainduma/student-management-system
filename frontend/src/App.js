@@ -69,6 +69,7 @@ function App() {
         <EditStudent
           selectedStudent={studentToEdit}
           handleCloseEdit={handleCloseEdit}
+          setShowEdit={setShowEdit}
         />
       ) : (
         <></>

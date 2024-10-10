@@ -57,3 +57,20 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.edit-student-input .number {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+ 
+}
+
+.edit-student-input .parent {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+}
+.edit-student-input p{
+    margin-top: 1px;
+    font-size: smaller;
+}

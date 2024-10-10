@@ -63,3 +63,22 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.add-student-input .number {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+ 
+}
+
+.add-student-input .parent {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+}
+.add-student-input p{
+    margin-top: 1px;
+    font-size: smaller;
+}
+
+  

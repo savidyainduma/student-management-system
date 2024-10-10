@@ -41,7 +41,7 @@ const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete}) =
       <div className="view-students-container">
         <div className="form-title">
             <h2>All students</h2>
-            <img src={assets.cross_icon} onClick={()=> navigate('/')}  />
+            <img src={assets.cross_icon} onClick={()=> navigate('/')} alt=''  />
         </div>
         <hr />
         <div className="table">
@@ -66,8 +66,8 @@ const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete}) =
                       <td>{data.ContactNumber}</td>
                       <td>{data.Address}</td>
                       <td>{data.ParentContact}</td>
-                      <td><img src={assets.edit_icon} onClick={()=>handleEdit(data)}></img></td>
-                      <td><img src={assets.delete_icon} onClick={()=> confirmDelete(data.id)}></img></td>
+                      <td><img src={assets.edit_icon} onClick={()=>handleEdit(data)} alt=''></img></td>
+                      <td><img src={assets.delete_icon} onClick={()=> confirmDelete(data.id) } alt=''></img></td>
                       
                       
                     </tr>
