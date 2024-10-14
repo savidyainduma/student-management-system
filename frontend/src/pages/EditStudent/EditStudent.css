@@ -52,7 +52,7 @@
 }
 
 .edit-student-input .gender-buttons{
-    width: 10vw;
+    width: 9vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
