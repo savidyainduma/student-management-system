@@ -31,7 +31,7 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
 
     if (Object.keys(validateErrors).length === 0) {
       await axios
-        .post("http://localhost:3001/api/students/addStudent", values)
+        .post("/addStudent", values)
         .then((res) => {
           console.log(res);
           handleCloseAdd();
@@ -48,6 +48,7 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
         <div className="form-title">
           <h2>Add a new student</h2>
           <img
+            alt=""
             src={assets.cross_icon}
             onClick={() => {
               setShowAdd(false);

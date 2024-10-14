@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 
 
 
-const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete}) => {
+
+const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete, setShowAdd}) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete}) =
             <h2>All students</h2>
             <img src={assets.cross_icon} onClick={()=> navigate('/')} alt=''  />
         </div>
+        
         <hr />
         <div className="table">
             <table>
@@ -77,7 +79,11 @@ const ViewStudents = ({handleEdit, students=[], getAllStudents, handleDelete}) =
                 
             </table>
         </div>
+        <div className="add-button">
+          <img src={assets.add_icon} alt="" srcset="" onClick={()=> setShowAdd(true)} />
+        </div>
       </div>
+        
     </div>
   )
 }

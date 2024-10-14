@@ -42,7 +42,7 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
 
     if (Object.keys(validateErrors).length === 0) {
       await axios
-        .put("http://localhost:3001/api/students/editStudent/" + id, values)
+        .put("/editStudent/" + id, values)
         .then((res) => {
           console.log(res);
           handleCloseEdit();
@@ -59,6 +59,7 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
         <div className="form-title">
           <h2>Edit student details</h2>
           <img
+          alt=""
             src={assets.cross_icon}
             onClick={() => {
               setShowEdit(false);

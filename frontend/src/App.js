@@ -7,6 +7,7 @@ import ViewStudents from "./pages/ViewStudents/ViewStudents";
 import EditStudent from "./pages/EditStudent/EditStudent";
 import axios from "axios";
 import Swal from "sweetalert2";
+axios.defaults.baseURL = 'http://localhost:3001/api/students'
 
 function App() {
   const [showAdd, setShowAdd] = useState(false);
@@ -16,7 +17,7 @@ function App() {
 
   const getAllStudents = async () => {
     await axios
-      .get("http://localhost:3001/api/students/")
+      .get("/")
       .then((res) => setStudentList(res.data))
       .catch((err) => console.log(err));
   };
@@ -24,7 +25,7 @@ function App() {
   const handleDelete = async (id) => {
     console.log(id);
     await axios
-      .delete("http://localhost:3001/api/students/" + id)
+      .delete("/" + id)
       .then((res) => getAllStudents())
       .catch((err) => console.log(err));
   };
@@ -86,6 +87,7 @@ function App() {
                   students={studentList}
                   getAllStudents={getAllStudents}
                   handleDelete={handleDelete}
+                  setShowAdd={setShowAdd}
                 />
               }
             ></Route>

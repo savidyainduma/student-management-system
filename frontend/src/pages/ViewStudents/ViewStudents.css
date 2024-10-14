@@ -36,9 +36,11 @@
     height: 25px;
 }
 .table{
+    margin-top: 20px;
     place-self: center;
     text-align: center;
     padding: 15px;
+    padding-top: 5px;
 }
 
 .table th, td {
@@ -54,4 +56,17 @@
 .table img {
     padding: 5px;
 }
+
+.add-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    
+  }
+ 
+  .add-button img{
+    cursor: pointer;
+  }
+
+  
 
