@@ -42,7 +42,7 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
 
     if (Object.keys(validateErrors).length === 0) {
       await axios
-        .put("/editStudent/" + id, values)
+        .put("" + id, values)
         .then((res) => {
           console.log(res);
           handleCloseEdit();

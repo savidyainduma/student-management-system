@@ -30,8 +30,9 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
     const validateErrors = Validation(values);
 
     if (Object.keys(validateErrors).length === 0) {
+      console.log( JSON.stringify(values,null,2));
       await axios
-        .post("/addStudent", values)
+        .post("", values)
         .then((res) => {
           console.log(res);
           handleCloseAdd();

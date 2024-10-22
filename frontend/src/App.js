@@ -7,7 +7,7 @@ import ViewStudents from "./pages/ViewStudents/ViewStudents";
 import EditStudent from "./pages/EditStudent/EditStudent";
 import axios from "axios";
 import Swal from "sweetalert2";
-axios.defaults.baseURL = 'http://localhost:3001/api/students'
+axios.defaults.baseURL = 'http://localhost:8080/api/students'
 
 function App() {
   const [showAdd, setShowAdd] = useState(false);
@@ -17,13 +17,13 @@ function App() {
 
   const getAllStudents = async () => {
     await axios
-      .get("/")
+      .get("")
       .then((res) => setStudentList(res.data))
       .catch((err) => console.log(err));
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
+    console.log("Deleted record with id: "+id);
     await axios
       .delete("/" + id)
       .then((res) => getAllStudents())
