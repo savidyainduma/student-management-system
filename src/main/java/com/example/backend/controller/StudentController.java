@@ -5,6 +5,7 @@ import com.example.backend.exception.ResourceNotFoundException;
 import com.example.backend.model.Student;
 import com.example.backend.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,13 @@ public class StudentController {
 
         studentRepository.save(updatedStudent);
         return ResponseEntity.ok(updatedStudent);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deleteStudent(@PathVariable int id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found for this id :: " + id));
+        studentRepository.delete(student);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
