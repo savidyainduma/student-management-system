@@ -32,19 +32,8 @@ public class BackendApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Student student = new Student();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        Date BirthDate = sdf.parse("2024/02/23");
 
-        
-//        Student student1 = new Student();
-//        student.setFullName("Savidya Induma");
-//        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
-//        Date BirthDate1 = sdf.parse("2024/02/23");
-//
-//        student.setGender("Male");
-//        student.setContactNumber(1234567890);
-//        student.setAddress("adwda awdawdw");
-//        student.setParentContact(654686813);
+
 
     }
 }
