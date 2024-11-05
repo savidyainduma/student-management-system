@@ -9,7 +9,7 @@
 
 .add-student-container {
     place-self: center;
-     width: max(23vw,500px);  
+     width: max(65vw,300px);  
      color: #808080; 
      background-color: white;
      display: flex;
@@ -79,6 +79,27 @@
 .add-student-input p{
     margin-top: 1px;
     font-size: smaller;
+}
+
+@media (max-width:768px) {
+    .add-student-container{
+        width: 90vw;
+        padding: 15px;
+    }
+    .add-student-input{
+        gap: 15px;
+    }
+    .add-student-container button{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:480px) {
+    .add-student-container{
+        width: 90vw;
+        padding: 15px;
+    }
+    
 }
 
   

@@ -14,16 +14,17 @@
     padding: 10px 10px;
     font-size: 14px;
     animation: fadeIn 0.5s;
-    
+    width: 95%;
 }
 .form-title{
-   
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
-    
+    width: 100%;
 }
+
 
 
 
