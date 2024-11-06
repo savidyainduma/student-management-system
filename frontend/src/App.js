@@ -42,6 +42,7 @@ function App() {
 
     Swal.fire({
       icon: "success",
+      width: '90%',
       title: "Record updated",
       showConfirmButton: false,
       timer: 1500,
@@ -52,6 +53,7 @@ function App() {
     setShowAdd(false);
     getAllStudents();
     Swal.fire({
+      width: '90%',
       icon: "success",
       title: "Your record has been saved",
       showConfirmButton: false,

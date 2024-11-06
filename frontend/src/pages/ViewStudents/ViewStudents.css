@@ -23,6 +23,7 @@
     align-items: center;
     color: black;
     width: 100%;
+    font-size: 16px;
 }
 
 
@@ -42,6 +43,10 @@
     text-align: center;
     padding: 15px;
     padding-top: 5px;
+    overflow-x: auto !important;
+    /* background-color: red; */
+    max-width: 90vw;
+
 }
 
 .table th, td {
@@ -69,5 +74,76 @@
     cursor: pointer;
   }
 
-  
+  .swal-popup {
+    max-width: 400px; 
+  }
+
+  @media (max-width:768px) {
+        .view-students-container{
+            width: 90%;
+            padding: 5px;
+            font-size: 12px;
+        }
+        .form-title{
+            font-size: 14px !important;
+        }
+        .table{
+            padding: 10px;
+            font-size: 12px;
+        }
+        .table th, .table td{
+            padding: 8px;
+
+        }
+        .table img {
+            width: 20px;
+            height: 20px;
+        }
+        .add-button {
+            bottom: 30px;
+            right: 30px;
+        }
+        .custom-swal-popup {
+            width: 60vw;
+
+          }
+          .swal-responsive-title {
+            font-size: 1.2rem; 
+          }
+          
+          .swal-responsive-text {
+            font-size: 1rem;
+          }
+          
+          .swal-responsive-button {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+          }  
+    
+  }
+  @media (max-width:480px) {
+    .view-students-container{
+        padding: 5px;
+        font-size: 11px;
+    }
+    .form-title{
+        font-size: 14px;
+    }
+    .table{
+        font-size: 10px;
+    }
+    .table th, .table td {
+        padding: 6px;
+    } 
+    .table img {
+        width: 18px;
+        height: 18px;
+    }
+    .custom-swal-popup {
+        width: 40vw;
+        height: 40vw;
+
+      }
+    
+  }
 

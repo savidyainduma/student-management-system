@@ -9,7 +9,7 @@
 
 .add-student-container {
     place-self: center;
-     width: max(65vw,300px);  
+     width: max(55vw,200px);  
      color: #808080; 
      background-color: white;
      display: flex;
@@ -30,7 +30,8 @@
 }
 
 .form-title img {
-    width: 16px;
+    width: 20px !important; 
+    height: 20px !important;
     cursor: pointer;
 }
 
@@ -92,12 +93,26 @@
     .add-student-container button{
         font-size: 14px;
     }
+    .form-title{
+        font-size: 12px;
+    }
+    .form-title img {
+        width: 14px !important;
+        height: 14px!important;
+    }
 }
 
 @media (max-width:480px) {
     .add-student-container{
         width: 90vw;
         padding: 15px;
+    }
+    .form-title{
+        font-size: 10px;
+    }
+    .form-title img {
+        width: 12px !important;
+        height: 12px!important;
     }
     
 }

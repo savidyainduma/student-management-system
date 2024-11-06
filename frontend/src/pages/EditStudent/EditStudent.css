@@ -74,3 +74,38 @@
     margin-top: 1px;
     font-size: smaller;
 }
+
+@media (max-width:768px) {
+    .edit-student-container{
+        width: 90vw;
+        padding: 15px;
+    }
+    .edit-student-input{
+        gap: 15px;
+    }
+    .edit-student-container button{
+        font-size: 14px;
+    }
+    .form-title{
+        font-size: 12px;
+    }
+    .form-title img {
+        width: 14px !important;
+        height: 14px!important;
+    }
+}
+
+@media (max-width:480px) {
+    .edit-student-container{
+        width: 90vw;
+        padding: 15px;
+    }
+    .form-title{
+        font-size: 10px;
+    }
+    .form-title img {
+        width: 12px !important;
+        height: 12px!important;
+    }
+    
+}
