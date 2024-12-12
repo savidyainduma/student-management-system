@@ -7,7 +7,9 @@ import ViewStudents from "./pages/ViewStudents/ViewStudents";
 import EditStudent from "./pages/EditStudent/EditStudent";
 import axios from "axios";
 import Swal from "sweetalert2";
-axios.defaults.baseURL = 'http://localhost:8080/api/students'
+import { Login } from "./components/login/Login";
+import { Signup } from "./components/signup/Signup";
+axios.defaults.baseURL = 'http://localhost:3001/api/students'
 
 function App() {
   const [showAdd, setShowAdd] = useState(false);
@@ -19,7 +21,10 @@ function App() {
     await axios
       .get("")
       .then((res) => setStudentList(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert(err.data.message);
+        console.error(err)
+      });
   };
 
   const handleDelete = async (id) => {
@@ -91,8 +96,11 @@ function App() {
                   handleDelete={handleDelete}
                   setShowAdd={setShowAdd}
                 />
+                
               }
             ></Route>
+           <Route path="/login" element= {<Login/>}></Route>
+            <Route path="/signup" element= {<Signup/>}></Route>
           </Routes>
         </BrowserRouter>
       </div>

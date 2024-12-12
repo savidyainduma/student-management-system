@@ -2,33 +2,36 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./sequelize');
 
 const Student = sequelize.define('Student', {
-  FullName: {
+  full_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  BirthDate: {
+  birth_date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  Gender: {
+  gender: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  ContactNumber: {
+  contact_number: {
+    type: DataTypes.STRING(10),
+    allowNull: false,
+  },
+  address: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  Address: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  ParentContact: {
-    type: DataTypes.STRING,
+  parent_contact: {
+    type: DataTypes.STRING(10),
     allowNull: false,
   },
 },
 {
     timestamps:false
 });
+
+
+
 
 module.exports = Student;

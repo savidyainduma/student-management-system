@@ -1,7 +1,7 @@
 const express = require("express");
 router = express.Router();
 
-const service = require("../models/services/student.services");
+const service = require("../models/services/student-services");
 
 router.get("/", async (req, res) => {
   const students = await service.getAllStudents();
@@ -27,7 +27,7 @@ router.post("/addstudent", async (req, res) => {
   }
 });
 
-router.put("/editStudent/:id", async (req, res) => {
+router.put("/editstudent/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const studentData = req.body;

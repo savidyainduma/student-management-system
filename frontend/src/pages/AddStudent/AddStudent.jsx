@@ -19,12 +19,12 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
     event.preventDefault();
 
     const values = {
-      FullName: name,
-      BirthDate: bdate,
-      Gender: gender,
-      ContactNumber: number,
-      Address: address,
-      ParentContact: parent,
+      full_name: name,
+      birth_date: bdate,
+      gender: gender,
+      contact_number: String(number),
+      address: address,
+      parent_contact: String(parent),
     };
 
     const validateErrors = Validation(values);
@@ -32,7 +32,7 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
     if (Object.keys(validateErrors).length === 0) {
       console.log( JSON.stringify(values,null,2));
       await axios
-        .post("", values)
+        .post("/addstudent", values)
         .then((res) => {
           console.log(res);
           handleCloseAdd();

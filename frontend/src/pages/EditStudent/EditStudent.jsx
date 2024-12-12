@@ -16,13 +16,13 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
 
   useEffect(() => {
     if (selectedStudent) {
-      setName(selectedStudent.FullName);
-      const date = selectedStudent.BirthDate.substring(0, 10);
+      setName(selectedStudent.full_name);
+      const date = selectedStudent.birth_date.substring(0, 10);
       setBdate(date);
-      setGender(selectedStudent.Gender);
-      setNumber(selectedStudent.ContactNumber);
-      setAddress(selectedStudent.Address);
-      setParent(selectedStudent.ParentContact);
+      setGender(selectedStudent.gender);
+      setNumber(selectedStudent.contact_number);
+      setAddress(selectedStudent.address);
+      setParent(selectedStudent.parent_contact);
       setId(selectedStudent.id);
     }
   }, []);
@@ -30,19 +30,19 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
   async function handleSubmit(event) {
     event.preventDefault();
     const values = {
-      FullName: name,
-      BirthDate: bdate,
-      Gender: gender,
-      ContactNumber: number,
-      Address: address,
-      ParentContact: parent,
+      full_name: name,
+      birth_date: bdate,
+      gender: gender,
+      contact_number: number,
+      address: address,
+      parent_contact: parent,
     };
 
     const validateErrors = Validation(values);
 
     if (Object.keys(validateErrors).length === 0) {
       await axios
-        .put("" + id, values)
+        .put("/editstudent/" + id, values)
         .then((res) => {
           console.log(res);
           handleCloseEdit();
