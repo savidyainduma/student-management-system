@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 export const Login = () => {
-
+  const [loginStatus, setLoginStatus] = useState(false);
   const[values,setValues] = useState(
     { 
          email:'',
@@ -22,9 +22,14 @@ export const Login = () => {
      .then(res => {
        if( res.status === 200){
          navigate('/');
-       } 
+         setLoginStatus(true);
+         localStorage.setItem("token", res.data.token); 
+       } else {
+        setLoginStatus(false);
+       }
      })
      .catch(err => alert(err?.response?.data?.error)
+
      )
  } 
 

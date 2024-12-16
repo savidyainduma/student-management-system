@@ -6,13 +6,52 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+
 
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  credentials:true
+}));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(session({
+  key:"userId",
+  secret:"subscribe",
+  resave:false,
+  saveUninitialized:false,
+  cookie:{
+    expires: 60*60*24,
+  }
+})); 
 
+
+
+const verifyJWT = (req,res,next) =>{
+  const token  = req.headers["x-access-token"]
+
+  if(!token){
+    res.send("You are not authenticated!");
+  } else {
+    jwt.verify(token, "jwtSecret", (err,decoded) =>{
+      if(err) {
+        res.json({auth: false, message: "Failed to authenticate."});
+      } else {
+        req.userId = decoded.id;
+        next();
+      }
+    })
+  }
+}
+module.exports = {verifyJWT};
+
+app.get("/isUserAuth", verifyJWT, (req,res) => {
+  res.send("You are authenticated...");
+  console.log("authenticated successfully.");
+})
 
 const studentRoutes = require('./controllers/student-controller');
 app.use("/api/students", studentRoutes);

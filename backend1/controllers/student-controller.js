@@ -1,7 +1,10 @@
 const express = require("express");
+const { verifyJWT } = require("..");
 router = express.Router();
 
+
 const service = require("../models/services/student-services");
+
 
 router.get("/", async (req, res) => {
   const students = await service.getAllStudents();

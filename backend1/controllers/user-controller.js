@@ -1,8 +1,10 @@
 const express = require("express");
 router = express.Router();
+const jwt = require("jsonwebtoken");
 
 const service = require('../models/services/user-services');
 const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 router.post("/signup", async (req, res) => {
     try {
@@ -22,21 +24,36 @@ router.post("/signup", async (req, res) => {
     }
   });
 
+
   router.post("/login", async (req,res) => {
     try{
       console.log("Request Body:", req.body);
       const {email, password} = req.body;
       const user = await service.loginUser(email,password);
 
+      req.session.user = {
+        id: user.id,
+        email: user.email,
+      };
+      console.log("Session Created:", req.session.user);
+      const id = user.id;
+      const token = jwt.sign({id}, "jwtSecret", {
+        expiresIn: 300,
+      })
+
       return res.status(200).json({
         message: "Login successful",
         user,
+        auth:true,
+        token:token,
+        
       });
     } 
     catch (error){
       return res.status(401).json({
         message:"Login failed",
-        error:error.message
+        error:error.message,
+        autth: false
       });
     }
   });

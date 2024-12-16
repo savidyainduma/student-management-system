@@ -1,15 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddStudent from "./pages/AddStudent/AddStudent";
 import ViewStudents from "./pages/ViewStudents/ViewStudents";
 import EditStudent from "./pages/EditStudent/EditStudent";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import Swal from "sweetalert2";
 import { Login } from "./components/login/Login";
 import { Signup } from "./components/signup/Signup";
-axios.defaults.baseURL = 'http://localhost:3001/api/students'
+axios.defaults.baseURL = 'http://localhost:3001/api/students';
+//axios.defaults.withCredentials = true;
 
 function App() {
   const [showAdd, setShowAdd] = useState(false);
@@ -65,6 +66,7 @@ function App() {
       timer: 1500,
     });
   };
+
 
   return (
     <>

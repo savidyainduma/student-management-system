@@ -1,12 +1,13 @@
-import React from 'react'
-import {assets} from '../../assets/assets'
+import React  from 'react'
 import './Home.css'
 import Header from '../../components/Header'
 import {useNavigate} from 'react-router-dom'
 
+
 const Home = ({setShowAdd}) => {
 
   const navigate = useNavigate();
+ 
 
   return (
     <div className='home'>

@@ -27,9 +27,9 @@ module.exports.loginUser = async(email,password) => {
     }
 
     return {
+      id: user.id,
       full_name: user.full_name,
       email: user.email,
-      
     };
   } catch (error) {
     throw new Error (error.message);
