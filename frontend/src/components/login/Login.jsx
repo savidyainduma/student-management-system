@@ -21,9 +21,9 @@ export const Login = () => {
      axios.post('http://localhost:3001/users/login', values)
      .then(res => {
        if( res.status === 200){
-         navigate('/');
+         navigate('/home');
          setLoginStatus(true);
-         localStorage.setItem("token", res.data.token); 
+         localStorage.setItem("token","Bearer "+ res.data.token); 
        } else {
         setLoginStatus(false);
        }

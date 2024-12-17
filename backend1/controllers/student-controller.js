@@ -6,12 +6,12 @@ router = express.Router();
 const service = require("../models/services/student-services");
 
 
-router.get("/", async (req, res) => {
+router.get("/",verifyJWT,  async (req, res) => {
   const students = await service.getAllStudents();
   res.send(students);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",verifyJWT, async (req, res) => {
   const affectedRows = await service.deleteStudent(req.params.id);
   console.log(affectedRows);
   if (affectedRows === 0)
@@ -19,7 +19,7 @@ router.delete("/:id", async (req, res) => {
   else res.send("deleted successfully");
 });
 
-router.post("/addstudent", async (req, res) => {
+router.post("/addstudent",verifyJWT, async (req, res) => {
   try {
     const requestBody = req.body;
     const result = await service.addStudent(requestBody);
@@ -30,7 +30,7 @@ router.post("/addstudent", async (req, res) => {
   }
 });
 
-router.put("/editstudent/:id", async (req, res) => {
+router.put("/editstudent/:id",verifyJWT, async (req, res) => {
   try {
     const id = req.params.id;
     const studentData = req.body;

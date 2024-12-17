@@ -24,19 +24,20 @@ app.use(session({
   resave:false,
   saveUninitialized:false,
   cookie:{
-    expires: 60*60*24,
+    expires: 1000*60*60*24,
   }
 })); 
 
 
 
 const verifyJWT = (req,res,next) =>{
-  const token  = req.headers["x-access-token"]
-
+  const token  = req.headers["authorization"]
+  
   if(!token){
-    res.send("You are not authenticated!");
+    res.send("Token Missing!");
   } else {
-    jwt.verify(token, "jwtSecret", (err,decoded) =>{
+    jwt.verify(token.split(' ')[1], "jwtSecret", (err,decoded) =>{
+      console.log("Error occured", err)
       if(err) {
         res.json({auth: false, message: "Failed to authenticate."});
       } else {

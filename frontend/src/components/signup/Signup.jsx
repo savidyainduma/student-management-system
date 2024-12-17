@@ -22,7 +22,7 @@ export const Signup = () => {
         axios.post('http://localhost:3001/users/signup', values)
         .then(res => {
           if( res.status === 201){
-            navigate('/login');
+            navigate('/');
           } else {
             alert("Error");
           }

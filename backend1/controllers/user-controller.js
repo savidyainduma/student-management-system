@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
       console.log("Session Created:", req.session.user);
       const id = user.id;
       const token = jwt.sign({id}, "jwtSecret", {
-        expiresIn: 300,
+        expiresIn: 1000*60*60*24,
       })
 
       return res.status(200).json({

@@ -86,7 +86,7 @@ const ViewStudents = ({
       <div className="view-students-container">
         <div className="form-title">
           <h2>All students</h2>
-          <img src={assets.cross_icon} onClick={() => navigate("/")} alt="" />
+          <img src={assets.cross_icon} onClick={() => navigate("/home")} alt="" />
         </div>
 
         <hr />

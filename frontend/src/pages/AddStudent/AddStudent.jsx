@@ -12,7 +12,7 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
   const [address, setAddress] = useState("");
   const [parent, setParent] = useState("");
   const [errors, setErrors] = useState({});
-
+  const token = localStorage.getItem("token");
   const birthDateRef = useRef(null);
 
   async function handleSubmit(event) {
@@ -30,9 +30,14 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
     const validateErrors = Validation(values);
 
     if (Object.keys(validateErrors).length === 0) {
-      console.log( JSON.stringify(values,null,2));
+      console.log(JSON.stringify(values, null, 2));
+      await axios.post("/addstudent", values, {
+        headers: { Authorization: token },
+      });
       await axios
-        .post("/addstudent", values)
+        .get("", {
+          headers: { Authorization: token },
+        })
         .then((res) => {
           console.log(res);
           handleCloseAdd();
@@ -93,17 +98,27 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
             />{" "}
             Female
           </div>
-          <div className="number" >
-          <input
-            type="text"
-            placeholder='Phone number' 
-            style={errors.number ? { borderColor: "red", color:"red" } : null}
-            required
-            onChange={(e) => setNumber(e.target.value)}
-          />
-          {errors.number && <p style={errors.number ? {color:"red", marginBottom: "1px"} : null}>{errors.number}</p>}
+          <div className="number">
+            <input
+              type="text"
+              placeholder="Phone number"
+              style={
+                errors.number ? { borderColor: "red", color: "red" } : null
+              }
+              required
+              onChange={(e) => setNumber(e.target.value)}
+            />
+            {errors.number && (
+              <p
+                style={
+                  errors.number ? { color: "red", marginBottom: "1px" } : null
+                }
+              >
+                {errors.number}
+              </p>
+            )}
           </div>
-          
+
           <input
             type="text"
             placeholder="Address"
@@ -111,16 +126,25 @@ const AddStudent = ({ setShowAdd, handleCloseAdd }) => {
             onChange={(e) => setAddress(e.target.value)}
           />
           <div className="parent">
-          <input
-            type="text"
-            placeholder="Parent`s Phone"
-            style={errors.parent ? { borderColor: "red", color:"red"} : null}
-            required
-            onChange={(e) => setParent(e.target.value)}
-          />
-          {errors.parent && <p style={errors.parent ? {color:"red", marginBottom: "1px" } : null}>{errors.parent}</p>}
+            <input
+              type="text"
+              placeholder="Parent`s Phone"
+              style={
+                errors.parent ? { borderColor: "red", color: "red" } : null
+              }
+              required
+              onChange={(e) => setParent(e.target.value)}
+            />
+            {errors.parent && (
+              <p
+                style={
+                  errors.parent ? { color: "red", marginBottom: "1px" } : null
+                }
+              >
+                {errors.parent}
+              </p>
+            )}
           </div>
-         
         </div>
         <button>Add Student</button>
       </form>

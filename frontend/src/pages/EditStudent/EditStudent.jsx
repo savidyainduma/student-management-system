@@ -13,7 +13,7 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
   const [address, setAddress] = useState("");
   const [parent, setParent] = useState("");
   const [errors, setErrors] = useState({});
-
+  const token = localStorage.getItem("token");
   useEffect(() => {
     if (selectedStudent) {
       setName(selectedStudent.full_name);
@@ -41,8 +41,16 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
     const validateErrors = Validation(values);
 
     if (Object.keys(validateErrors).length === 0) {
+      console.log("puttoken", token);
       await axios
-        .put("/editstudent/" + id, values)
+        .put(
+          "/editstudent/" + id,values,
+          {
+            headers: { Authorization: token },
+          }
+          
+        )
+        
         .then((res) => {
           console.log(res);
           handleCloseEdit();
@@ -59,7 +67,7 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
         <div className="form-title">
           <h2>Edit student details</h2>
           <img
-          alt=""
+            alt=""
             src={assets.cross_icon}
             onClick={() => {
               setShowEdit(false);
@@ -99,18 +107,28 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
             />{" "}
             Female
           </div>
-          <div className="number" >
-          <input
-            type="text"
-            value={number}
-            placeholder='Phone number' 
-            style={errors.number ? { borderColor: "red", color:"red" } : null}
-            required
-            onChange={(e) => setNumber(e.target.value)}
-          />
-          {errors.number && <p style={errors.number ? {color:"red", marginBottom: "1px"} : null}>{errors.number}</p>}
+          <div className="number">
+            <input
+              type="text"
+              value={number}
+              placeholder="Phone number"
+              style={
+                errors.number ? { borderColor: "red", color: "red" } : null
+              }
+              required
+              onChange={(e) => setNumber(e.target.value)}
+            />
+            {errors.number && (
+              <p
+                style={
+                  errors.number ? { color: "red", marginBottom: "1px" } : null
+                }
+              >
+                {errors.number}
+              </p>
+            )}
           </div>
-          
+
           <input
             type="text"
             value={address}
@@ -118,17 +136,26 @@ const EditStudent = ({ selectedStudent, handleCloseEdit, setShowEdit }) => {
             onChange={(e) => setAddress(e.target.value)}
           />
           <div className="parent">
-          <input
-            type="text"
-            value={parent}
-            placeholder="Parent`s Phone"
-            style={errors.parent ? { borderColor: "red", color:"red"} : null}
-            required
-            onChange={(e) => setParent(e.target.value)}
-          />
-          {errors.parent && <p style={errors.parent ? {color:"red", marginBottom: "1px" } : null}>{errors.parent}</p>}
+            <input
+              type="text"
+              value={parent}
+              placeholder="Parent`s Phone"
+              style={
+                errors.parent ? { borderColor: "red", color: "red" } : null
+              }
+              required
+              onChange={(e) => setParent(e.target.value)}
+            />
+            {errors.parent && (
+              <p
+                style={
+                  errors.parent ? { color: "red", marginBottom: "1px" } : null
+                }
+              >
+                {errors.parent}
+              </p>
+            )}
           </div>
-
         </div>
         <button>Save Details</button>
       </form>

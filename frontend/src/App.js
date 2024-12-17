@@ -17,10 +17,14 @@ function App() {
   const [showEdit, setShowEdit] = useState(false);
   const [studentToEdit, setStudentToEdit] = useState();
   const [studentList, setStudentList] = useState([]);
-
+  const token = localStorage.getItem("token");
   const getAllStudents = async () => {
+  
+    console.log("token: ",token);
     await axios
-      .get("")
+      .get("", {
+        headers: {"Authorization": token}
+      })
       .then((res) => setStudentList(res.data))
       .catch((err) => {
         alert(err.data.message);
@@ -31,7 +35,10 @@ function App() {
   const handleDelete = async (id) => {
     console.log("Deleted record with id: "+id);
     await axios
-      .delete("/" + id)
+      .delete("/" + id, {
+        headers: {"Authorization": token}
+      }
+      )
       .then((res) => getAllStudents())
       .catch((err) => console.log(err));
   };
@@ -87,7 +94,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home setShowAdd={setShowAdd} />}></Route>
+            <Route path="/home" element={<Home setShowAdd={setShowAdd} />}></Route>
             <Route
               path="/allstudents"
               element={
@@ -101,7 +108,7 @@ function App() {
                 
               }
             ></Route>
-           <Route path="/login" element= {<Login/>}></Route>
+           <Route path="/" element= {<Login/>}></Route>
             <Route path="/signup" element= {<Signup/>}></Route>
           </Routes>
         </BrowserRouter>

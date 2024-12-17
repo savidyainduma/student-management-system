@@ -15,7 +15,7 @@ const Home = ({setShowAdd}) => {
       <Header />
       <div className="button-section">
       <button className='btn' onClick={() => setShowAdd(true)}>Add a new student</button>
-      <button className='btn' onClick={() => navigate('./allstudents')}>View all students</button>
+      <button className='btn' onClick={() => navigate('/allstudents')}>View all students</button>
       </div>
 
     </div>
