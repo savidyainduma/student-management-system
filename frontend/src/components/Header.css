@@ -2,6 +2,9 @@
     margin-top: 10px;
     position: relative;
     bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header h1{
@@ -9,4 +12,7 @@
     color: aqua;
     margin-left: 15px;
     background-color: transparent;
+}
+.header-icons {
+    
 }
