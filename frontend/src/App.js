@@ -1,11 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { useEffect, useState } from "react";
 import AddStudent from "./pages/AddStudent/AddStudent";
 import ViewStudents from "./pages/ViewStudents/ViewStudents";
 import EditStudent from "./pages/EditStudent/EditStudent";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import Swal from "sweetalert2";
 import { Login } from "./components/login/Login";
 import { Signup } from "./components/signup/Signup";
@@ -18,6 +18,13 @@ function App() {
   const [studentToEdit, setStudentToEdit] = useState();
   const [studentList, setStudentList] = useState([]);
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token && window.location.pathname !== "/")
+      window.location.pathname = "/"
+  },[token])
+
+
   const getAllStudents = async () => {
   
     console.log("token: ",token);

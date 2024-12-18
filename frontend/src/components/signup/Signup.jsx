@@ -78,7 +78,7 @@ export const Signup = () => {
               <Grid container justifyContent='space-between' sx={{mt:1}}>
                 <Grid item sx={{display:"flex", gap:1}}>
                   <Typography>Already registered?  </Typography>
-                  <Link component={RouterLink} to={"/login"}>
+                  <Link component={RouterLink} to={"/"}>
                     Sign In
                   </Link>
                   <Typography> here...</Typography>

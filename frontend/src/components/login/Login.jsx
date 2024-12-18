@@ -8,6 +8,7 @@ import axios from 'axios';
 
 export const Login = () => {
   const [loginStatus, setLoginStatus] = useState(false);
+  const [userName, setuserName] = useState('')
   const[values,setValues] = useState(
     { 
          email:'',
@@ -17,13 +18,15 @@ export const Login = () => {
  const navigate = useNavigate();
  const handleSubmit = (event) => {
      event.preventDefault();
-     console.log("values: ",values);
      axios.post('http://localhost:3001/users/login', values)
      .then(res => {
        if( res.status === 200){
          navigate('/home');
+         localStorage.setItem("userName",res.data.user.full_name);
+         console.log("name:", res.data.user.full_name);
          setLoginStatus(true);
          localStorage.setItem("token","Bearer "+ res.data.token); 
+         
        } else {
         setLoginStatus(false);
        }

@@ -41,6 +41,7 @@ router.post("/signup", async (req, res) => {
         expiresIn: 1000*60*60*24,
       })
 
+
       return res.status(200).json({
         message: "Login successful",
         user,
@@ -57,5 +58,20 @@ router.post("/signup", async (req, res) => {
       });
     }
   });
+
+  // router.post("/logout", (req, res) => {
+  //   try {
+  //     req.session.destroy((err) => {
+  //       if (err) {
+  //         return res.status(500).json({ message: "Failed to log out", error: err.message });
+  //       }
+  //       res.clearCookie("connect.sid");  // Clears the session cookie
+  //       return res.status(200).json({ message: "Logged out successfully" });
+  //     });
+  //   } catch (error) {
+  //     return res.status(500).json({ message: "Error occurred during logout", error: error.message });
+  //   }
+  // });
+ 
 
   module.exports = router;
