@@ -60,7 +60,7 @@ app.use("/api/students", studentRoutes);
 const userRoutes=require('./controllers/user-controller');
 app.use("/users", userRoutes);
 
-sequelize.sync()
+sequelize.sync({alter:true})
   .then(() => {
     console.log("Database synced");
     app.listen(3001, () => console.log("Server started on port 3001")); 
