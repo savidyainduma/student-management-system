@@ -1,73 +1,46 @@
-package com.example.backend.model;
+package com.example.backend.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.*;
 
-import javax.security.auth.Subject;
 import java.util.Date;
-import java.util.Set;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "students")
-
-public class Student {
-
-    @Id
-    @JsonProperty("id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+public class StudentSaveDto {
     @Column(name = "FullName", nullable = false)
     @JsonProperty("FullName")
     @NotBlank(message = "Full name is required")
     private String fullName;
 
-    @Column(name = "BirthDate", nullable = false)
+
     @JsonProperty("BirthDate")
     @NotNull(message = "Bith date is required")
     private Date birthDate;
 
-    @Column(name = "Gender", nullable = false)
+
     @JsonProperty("Gender")
     @NotNull(message = "Gender is required")
     @Pattern(regexp = "Male|Female", message = "Gender must be Male or Female")
     private String gender;
 
-    @Column(name = "ContactNumber", nullable = false)
+
     @JsonProperty("ContactNumber")
     @NotNull(message = "Phone number is required")
     @Pattern(regexp = "^\\+?\\d{10,15}$", message = "Contact number must be a valid phone number")
 
     private String contactNumber;
 
-    @Column(name = "Address", nullable = false)
+
     @JsonProperty("Address")
     @NotNull(message = "Address is required")
     private String address;
 
-    @Column(name = "ParentContact", nullable = false)
+
     @JsonProperty("ParentContact")
     @NotNull(message = "Parent contact is required")
     @Pattern(regexp = "^\\+?\\d{10,15}$", message = "Contact number must be a valid phone number")
-
     private String parentContact;
 
-    public Student(String fullName, Date birthDate, String gender, String contactNumber, String address, String parentContact) {
-        this.fullName = fullName;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.contactNumber = contactNumber;
-        this.address = address;
-        this.parentContact = parentContact;
-    }
 }
